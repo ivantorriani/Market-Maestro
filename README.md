@@ -1,2 +1,2 @@
 # Dicey-Decision-Dan
-Dicey Dan makes financial decisions. He's very good at it! 
+Hey, it's Constance here! As far as I can tell, Dan and Mr.T are close friends. Dan, the experienced financial advisor, constantly practices his stoic values and reads Marcus Aerulius as Mr. T bombards him with his latest ill-informed financial speculations. In the end, it's a great companionship! Mr. T's tantalizing traits combined with Dan's diluted-down declarations give Mr. T the best possible returns.  
