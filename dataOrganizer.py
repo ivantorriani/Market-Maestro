@@ -4,18 +4,9 @@ from openai import OpenAI
 
 #api key- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-api_key = 'urdad'
+api_key = 'solong,andthanksforallthefishes!'
 client = OpenAI(api_key=api_key)
 
-#stock class - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-class Stock:
-    tag = str
-    name = str
-    lastPrice = float
-    changePrice = float
-    changePercent = float
-    volume = float
 
 #keyword list - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -37,7 +28,9 @@ aiDesc = (
 
 )
 
-#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+#list of instances- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+stocks = []
+completeData = []
 
 
 
@@ -61,6 +54,30 @@ def aiFind(keyword, listOfData):
 
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+i = 0
+j = 0
+
+def organize():
+    global i
+    while (i < len(stockTags)):
+        indivData = []
+        for item in listOfKeywords:
+            indivData.append(aiFind(str(item), str(stockTags[i])))
+            completeData.append(indivData)
+        
+        i += 1
+    
+    return completeData
+           
+
+  
+dataList = organize()
+
+    
+
+    
+
+
 
 
 
