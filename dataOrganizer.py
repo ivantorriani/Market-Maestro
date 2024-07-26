@@ -4,7 +4,7 @@ from openai import OpenAI
 
 #api key- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-api_key = 'solong,andthanksforallthefishes!'
+api_key = 'bleep!'
 client = OpenAI(api_key=api_key)
 
 
@@ -32,8 +32,6 @@ aiDesc = (
 stocks = []
 completeData = []
 
-
-
 def aiFind(keyword, listOfData):
     global aiDesc
     directory = str("Keyword" + keyword + "in" + listOfData)
@@ -55,7 +53,7 @@ def aiFind(keyword, listOfData):
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 i = 0
-j = 0
+
 
 def organize():
     global i
@@ -63,8 +61,7 @@ def organize():
         indivData = []
         for item in listOfKeywords:
             indivData.append(aiFind(str(item), str(stockTags[i])))
-            completeData.append(indivData)
-        
+        completeData.append(indivData)
         i += 1
     
     return completeData
@@ -73,7 +70,6 @@ def organize():
   
 dataList = organize()
 
-    
 
     
 
