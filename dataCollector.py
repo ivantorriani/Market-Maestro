@@ -32,7 +32,7 @@ def getData(soup):
 htmlData = getPage('https://finance.yahoo.com/u/yahoo-finance/watchlists/most-active-penny-stocks/')
 soup = parsePage(htmlData)
 stockTags = getData(soup)
-print(stockTags)
+
 
 
 
