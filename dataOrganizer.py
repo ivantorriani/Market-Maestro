@@ -4,7 +4,7 @@ from openai import OpenAI
 
 #api key- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-api_key = 'weksdf'
+api_key = 'peek'
 client = OpenAI(api_key=api_key)
 
 
