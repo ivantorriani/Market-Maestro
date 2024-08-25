@@ -9,7 +9,7 @@ from a_break_and_volume import (
 )
 
 from dataOrganizer import just_tags
-
+from halo import Halo
 
 # - - - - - - - - - - - - - - - - - -
 
@@ -19,6 +19,7 @@ stock_list = {}
 
 stock_gather = []
 
+loading_spinner = Halo(text = 'Loading', spinner = 'dots')
 # - - - - - - - - - - - - - - - - - -
 
 class Stock:
@@ -42,25 +43,32 @@ class Stock:
         self.ascending_triangle_status = ascending_triangle_status
 
 # fill dictionary - - - - - - - - - - - - - - - - - -
-
+i = 0
 def fill_stock_dict():
+    global i 
 
+    loading_spinner.start()
+    
 
-    for item in list_of_tags:
+#make sure it append to list
 
-        stock_list[str(item[0][0])] = Stock(
+    while (i < len(list_of_tags[0])):
 
-            str(item[0][0]),
-            str(detect_breakout(item[0][0])),
-            str(detect_high_volume(item[0][0])),
-            str(detect_cup_and_handle(item[0][0])),
-            str(detect_double_bottom(item[0][0])),
-            str(detect_ascending_triangle(item[0][0]))
+        stock_list[str(list_of_tags[0][i][0])] = Stock(
+
+            str(list_of_tags[0][i][0]),
+            str(detect_breakout(list_of_tags[0][i][0])),
+            str(detect_high_volume(list_of_tags[0][i][0])),
+            str(detect_cup_and_handle(list_of_tags[0][i][0])),
+            str(detect_double_bottom(list_of_tags[0][i][0])),
+            str(detect_ascending_triangle(list_of_tags[0][i][0]))
+            
 
         )
+
+        i += 1
+
+    loading_spinner.stop_and_persist(symbol='✔️', text='Done!')
+
         
     return stock_list
-
-
-
-

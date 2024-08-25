@@ -102,7 +102,7 @@ def detect_ascending_triangle(ticker):
     
     return data
 
-
+'''
 def check_rsi_momentum(ticker, start="2024-08-01", end="2024-08-23", rsi_period=14):
     # Load historical data
     data = yf.download(ticker, start=start, end=end)
@@ -122,7 +122,6 @@ def check_rsi_momentum(ticker, start="2024-08-01", end="2024-08-23", rsi_period=
     potential_buy = data[data['RSI_oversold'] & data['RSI_above_30'] & data['RSI_moving_up']]
 
     return potential_buy[['Close', 'RSI']]
-
 
 def detect_macd_crossover(ticker, start="2023-01-01", end="2023-08-23"):
     # Load historical data
@@ -153,3 +152,5 @@ def detect_macd_crossover(ticker, start="2023-01-01", end="2023-08-23"):
 # Example usage
 macd_crossovers = detect_macd_crossover("AAPL")
 print(macd_crossovers)
+
+'''
