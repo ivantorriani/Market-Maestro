@@ -1,4 +1,4 @@
-from a_break_and_volume import (
+from technical_analysis import (
 
     detect_breakout,
     detect_high_volume,
@@ -8,21 +8,35 @@ from a_break_and_volume import (
 
 )
 
+from fundamental_analysis import (
+
+    get_general_info,
+    get_timely_info,
+    get_financials,
+    get_balance_sheet,
+    get_cash_flow,
+    get_earnings
+
+)
+
 from dataOrganizer import just_tags
 from halo import Halo
 
-# - - - - - - - - - - - - - - - - - -
+# preliminary initializations - - - - - - - - - - - - - - - - - -
 
 list_of_tags = just_tags()
 
-stock_list = {}
+tech_ana_dict = {}
 
-stock_gather = []
+fund_ana_dict = {}
 
-loading_spinner = Halo(text = 'Loading', spinner = 'dots')
-# - - - - - - - - - - - - - - - - - -
+first_spinner = Halo(text = 'Organizing T.A data into classes...', spinner = 'bouncingBar')
 
-class Stock:
+second_spinner = Halo(text = "Organizing F.A data into classes...", spinner = 'star')
+
+# create classes - - - - - - - - - - - - - - - - - - 
+
+class stock_ta:
 
     def __init__(
             
@@ -42,19 +56,41 @@ class Stock:
         self.double_bottom_status = double_bottom_status
         self.ascending_triangle_status = ascending_triangle_status
 
-# fill dictionary - - - - - - - - - - - - - - - - - -
+
+class stock_fa:
+
+    def __init__(
+            
+            self,
+            symbol, 
+            g_info,
+            t_info,
+            financials,
+            balance_sheet,
+            cash_flow
+    ):
+        self.symbol = symbol
+        self.gen_info = g_info
+        self.t_info = t_info
+        self.financials = financials
+        self.balance_sheet = balance_sheet
+        self.cash_flow = cash_flow
+    
+
+# fill dictionaries - - - - - - - - - - - - - - - - - -
+
 i = 0
-def fill_stock_dict():
+def fill_ta_dict():
     global i 
 
-    loading_spinner.start()
+    first_spinner.start()
     
 
 #make sure it append to list
 
     while (i < len(list_of_tags[0])):
 
-        stock_list[str(list_of_tags[0][i][0])] = Stock(
+        tech_ana_dict[str(list_of_tags[0][i][0])] = stock_ta(
 
             str(list_of_tags[0][i][0]),
             str(detect_breakout(list_of_tags[0][i][0])),
@@ -68,7 +104,35 @@ def fill_stock_dict():
 
         i += 1
 
-    loading_spinner.stop_and_persist(symbol='✔️', text='Done!')
+    first_spinner.stop_and_persist(symbol='✔️', text='Done!')
 
         
-    return stock_list
+    return tech_ana_dict
+
+
+
+
+def fill_fa_dict():
+    global i 
+
+    second_spinner.start()
+
+    while (i < len(list_of_tags[0])):
+        fund_ana_dict[str(list_of_tags[0][i][0])] = stock_fa(
+
+            str(list_of_tags[0][i][0]),
+            str(get_general_info(list_of_tags[0][i][0])),
+            str(get_timely_info(list_of_tags[0][i][0])),
+            str(get_financials(list_of_tags[0][i][0])),
+            str(get_cash_flow(list_of_tags[0][i][0])),
+            str(get_earnings(list_of_tags[0][i][0]))
+            
+
+        )
+
+        i += 1
+
+    second_spinner.stop_and_persist(symbol='✔️', text='Done!')
+
+        
+    return fund_ana_dict
